@@ -37,4 +37,15 @@ public class ProductServiceTest
 
         Assert.DoesNotContain(result, product => product.Price < minimumPrice);
     }
+
+    [Fact]
+    public void GetProductsByMinimumPrice_GivenVeryHighMinimumPrice_ReturnsEmptyCollection()
+    {
+        var service = new ProductService();
+        var minimumPrice = 1000m;
+
+        var result = service.GetProductsByMinimumPrice(minimumPrice).ToList();
+
+        Assert.Empty(result);
+    }
 }
