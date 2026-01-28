@@ -48,4 +48,15 @@ public class ProductServiceTest
 
         Assert.Empty(result);
     }
+
+    [Fact]
+    public void GetProductsByMinimumPrice_GivenMinimumPrice_ReturnsAllProducts()
+    {
+        var service = new ProductService();
+        var minimumPrice = 0m;
+
+        var result = service.GetProductsByMinimumPrice(minimumPrice).ToList();
+
+        Assert.Equal(5, result.Count);
+    }
 }
